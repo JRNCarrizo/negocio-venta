@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Carrito;
 use Illuminate\Http\Request;
 
 class CarritoController extends Controller
@@ -146,5 +147,21 @@ class CarritoController extends Controller
     // Si el producto no está en el carrito, redirigir con un mensaje de error
     return redirect()->route('carrito.index')->with('error', 'Producto no encontrado en el carrito.');
 }
+
+
+
+public function contarCarrito()
+{
+    // Si el carrito está en la sesión, contar la cantidad de productos
+    $carrito = session()->get('carrito', []);
+
+    // Sumar las cantidades de los productos en el carrito
+    $cantidad = array_sum(array_column($carrito, 'cantidad'));
+
+    return response()->json([
+        'cantidad' => $cantidad ?? 0 // Si es NULL, devolver 0
+    ]);
+}
+
 
 }
