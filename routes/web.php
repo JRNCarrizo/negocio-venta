@@ -33,4 +33,5 @@ Route::prefix('carrito')->group(function () {
     Route::delete('/vaciar', [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
 });
 
+Route::patch('/carrito/actualizar/{id}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
 
