@@ -60,6 +60,12 @@
                 <h3 id="total">{{ $total }} $</h3>
             </div>
 
+            <!-- Botón para cancelar la orden y vaciar el carrito -->
+            <form action="{{ route('carrito.cancelar') }}" method="POST" style="display:inline-block;">
+                @csrf
+                <button type="submit" class="btn btn-danger">Cancelar Orden</button>
+            </form>
+
             <a href="{{ route('productos.index') }}" class="btn btn-primary">Volver a productos</a>
         @else
             <p>No hay productos en el carrito.</p>

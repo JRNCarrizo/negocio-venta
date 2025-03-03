@@ -35,4 +35,5 @@ Route::prefix('carrito')->group(function () {
 
 Route::patch('/carrito/actualizar/{id}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
 
-Route::get('/carrito/contar', [CarritoController::class, 'contarCarrito'])->name('carrito.contar');
+Route::get('/carrito/contar', [CarritoController::class, 'contarCarrito'])->name('carrito.contar');Route::post('/carrito/cancelar', [CarritoController::class, 'cancelar'])->name('carrito.cancelar');
+Route::post('/carrito/cancelar', [CarritoController::class, 'cancelar'])->name('carrito.cancelar');

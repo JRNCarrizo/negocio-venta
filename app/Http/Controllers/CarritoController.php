@@ -162,6 +162,30 @@ public function contarCarrito()
         'cantidad' => $cantidad ?? 0 // Si es NULL, devolver 0
     ]);
 }
+public function cancelar()
+{
+    // Recuperamos el carrito de la sesión
+    $carrito = session()->get('carrito', []);
+
+    // Iterar sobre los productos del carrito para restaurar el stock
+    foreach ($carrito as $id => $producto) {
+        // Buscar el producto en la base de datos
+        $productoEnBase = Producto::find($id);
+        
+        // Si el producto existe, restauramos el stock
+        if ($productoEnBase) {
+            $productoEnBase->stock += $producto['cantidad'];  // Restauramos el stock
+            $productoEnBase->save();  // Guardamos los cambios en la base de datos
+        }
+    }
+
+    // Vaciar el carrito en la sesión
+    session()->forget('carrito');
+
+    // Redirigir de vuelta con un mensaje de éxito
+    return redirect()->route('carrito.index')->with('success', 'La orden ha sido cancelada y el stock ha sido restaurado.');
+}
+
 
 
 }
