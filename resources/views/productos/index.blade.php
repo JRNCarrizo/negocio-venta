@@ -3,7 +3,11 @@
 @section('content')
     <div class="container">
         <h1>Lista de Productos</h1>
+
+    
+
         <a href="{{ route('productos.create') }}" class="btn btn-primary mb-3">Agregar Nuevo Producto</a>
+
         @if ($productos->isEmpty())
             <p>No hay productos disponibles.</p>
         @else
@@ -15,7 +19,7 @@
                         <th>Descripción</th>
                         <th>Precio</th>
                         <th>Stock</th>
-                        <th>Categoría</th>
+                        <th>Imagen</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -27,9 +31,11 @@
                             <td>{{ $producto->descripcion }}</td>
                             <td>{{ $producto->precio }}</td>
                             <td>{{ $producto->stock }}</td>
-                            <td>{{ $producto->categoria }}</td>
                             <td>
-                                <a href="{{ route('productos.show', $producto->id) }}" class="btn btn-info btn-sm">Ver</a>
+                                {{-- <img src="{{ asset('storage/' . $producto->imagen_url) }}" alt="{{ $producto->nombre }}" width="50"> --}}
+                            </td>
+                            <td>
+      
                                 <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-warning btn-sm">Editar</a>
                                 <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
