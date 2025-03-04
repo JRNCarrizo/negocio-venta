@@ -78,20 +78,22 @@
             input.addEventListener('input', function() {
                 const id = this.getAttribute('data-id');
                 const cantidad = parseInt(this.value);
-                const precio = parseFloat(document.querySelector(`#precio_${id}`).textContent);
+                const precioTexto = document.querySelector(`#precio_${id}`).textContent.replace('$', '').trim();
+                const precio = parseFloat(precioTexto);
                 
                 // Actualizar el subtotal en el DOM
                 const subtotalCell = document.querySelector(`.subtotal[data-id="${id}"]`);
                 const subtotal = cantidad * precio;
-                subtotalCell.textContent = subtotal.toFixed(2) + ' $';
-
+                subtotalCell.textContent = '$' + subtotal.toFixed(2);
+    
                 // Actualizar el total
                 let total = 0;
                 document.querySelectorAll('.subtotal').forEach(subtotalElem => {
-                    total += parseFloat(subtotalElem.textContent);
+                    const subtotalValue = parseFloat(subtotalElem.textContent.replace('$', '').trim());
+                    total += subtotalValue;
                 });
-                document.getElementById('total').textContent = total.toFixed(2) + ' $';
-
+                document.getElementById('total').textContent = 'Precio Total: $' + total.toFixed(2);
+    
                 // Enviar la nueva cantidad al servidor para actualizar el carrito
                 fetch(`{{ url('carrito/actualizar') }}/${id}`, {
                     method: 'PATCH',
