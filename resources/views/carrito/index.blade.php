@@ -25,7 +25,7 @@
                     @foreach (session()->get('carrito', []) as $id => $producto)
                         <tr>
                             <td>{{ $producto['nombre'] }}</td>
-                            <td id="precio_{{ $id }}">{{ $producto['precio'] }} $</td>
+                            <td id="precio_{{ $id }}">${{ $producto['precio'] }} </td>
                             <td>
                                 <!-- Campo para modificar la cantidad -->
                                 <input 
@@ -39,7 +39,7 @@
                                     style="width: 70px;">
                             </td>
                             <td class="subtotal" data-id="{{ $id }}">
-                                {{ $producto['precio'] * $producto['cantidad'] }} $
+                                ${{ $producto['precio'] * $producto['cantidad'] }} 
                             </td>
                             <td>
                                 <!-- Botón para eliminar del carrito -->
@@ -56,8 +56,8 @@
 
             <!-- Total del carrito -->
             <div class="d-flex justify-content-between">
-                <h3>Total:</h3>
-                <h3 id="total">{{ $total }} $</h3>
+                
+                <h3 id="total">Precio Total: ${{ $total }}</h3>
             </div>
 
             <!-- Botón para cancelar la orden y vaciar el carrito -->

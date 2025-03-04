@@ -1,3 +1,6 @@
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
 export default defineConfig({
     plugins: [
         laravel({
@@ -7,7 +10,7 @@ export default defineConfig({
     ],
     server: {
         proxy: {
-            '/app': 'http://localhost',
+            '/app': 'http://localhost:8000', // Asegúrate de que este puerto sea correcto
         },
     },
 });
