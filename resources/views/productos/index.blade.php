@@ -53,9 +53,9 @@
                                 <form action="{{ route('carrito.agregar', $producto->id) }}" method="POST" style="display:inline-block;" id="agregar-carrito-form-{{ $producto->id }}">
                                     @csrf
                                     <!-- Campo para seleccionar cantidad con límite en el stock -->
-                                    <input type="number" name="cantidad" min="1" max="{{ $producto->stock }}" value="1" class="form-control form-control-sm" style="width: 60px; display: inline-block;">
+                                    <input type="number" name="cantidad" min="1" max="{{ $producto->stock }}" value="0" class="form-control form-control-sm" style="width: 60px; display: inline-block;">
                                     
-                                    <button type="submit" class="btn btn-success btn-sm">Agregar al carrito</button>
+                                    <button type="submit" class="btn btn-success btn-sm">🛒 Agregar al carrito</button>
                                 </form>
                             </td>
                         </tr>
