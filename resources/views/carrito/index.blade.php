@@ -65,6 +65,11 @@
                 @csrf
                 <button type="submit" class="btn btn-danger">Cancelar Orden</button>
             </form>
+             <!-- Botón para vaciar el carrito -->
+             <form action="{{ route('carrito.vaciar') }}" method="POST" style="display:inline-block;">
+                @csrf
+                <button type="submit" class="btn btn-warning">Compra Realizada</button>
+            </form>
 
             <a href="{{ route('productos.index') }}" class="btn btn-primary">Volver a productos</a>
         @else

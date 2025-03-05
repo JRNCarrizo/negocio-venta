@@ -37,3 +37,4 @@ Route::patch('/carrito/actualizar/{id}', [CarritoController::class, 'actualizar'
 
 Route::get('/carrito/contar', [CarritoController::class, 'contarCarrito'])->name('carrito.contar');Route::post('/carrito/cancelar', [CarritoController::class, 'cancelar'])->name('carrito.cancelar');
 Route::post('/carrito/cancelar', [CarritoController::class, 'cancelar'])->name('carrito.cancelar');
+Route::post('/carrito/vaciar', [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
